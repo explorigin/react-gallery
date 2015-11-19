@@ -4,6 +4,7 @@
 		"quotes": [2, "single"],
 		"linebreak-style": [2, "unix"],
 		"semi": [2, "always"],
+		"no-console": 0,
 		"react/display-name": [1, {"acceptTranspilerName": true}],
 		"react/forbid-prop-types": 1,
 		"react/jsx-boolean-value": 1,

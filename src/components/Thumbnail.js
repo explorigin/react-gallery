@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 export default class Thumbnail extends Component {
 	render() {
-		let { key, url, caption, link} = this.props;
+		let { key, url, caption, link, children} = this.props;
 
 		let linkWrap = (children) => {
 			return (
@@ -17,7 +17,7 @@ export default class Thumbnail extends Component {
 		let figure = (key) => {
 			return (
 				<figure key={key} >
-					<img src={url} />
+					{url ? <img src={url} /> : children}
 					<figcaption>{caption}</figcaption>
 				</figure>
 			);

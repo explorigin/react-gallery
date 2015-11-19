@@ -2,10 +2,52 @@
 <html>
   <head>
     <title>Gallery</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
   </head>
   <body>
     <div id="app"></div>
 
-    <script src="/bundle.js"></script>
+	<script>
+	window.initialState = {
+		imagesById: {
+			1: {
+				id: 1,
+				name: 'a',
+				url: 'http://placekitten.com/g/320/240'
+			},
+			2: {
+				id: 2,
+				name: 'b',
+				url: 'http://placekitten.com/g/320/200'
+			},
+			3: {
+				id: 3,
+				name: 'c',
+				url: 'http://placekitten.com/g/320/240'
+			},
+			4: {
+				id: 4,
+				name: 'd',
+				url: 'http://placekitten.com/g/320/200'
+			}
+		},
+		albumsById: {
+			1: {
+				id: 1,
+				name: 'Summer 2015',
+				showcase: 0,
+				images: [1, 2]
+			},
+			2: {
+				id: 2,
+				name: 'Child Antics',
+				showcase: 0,
+				images: [3, 4]
+			}
+		},
+		albums: [1, 2]
+	};
+	</script>
+    <script src="bundle.js"></script>
   </body>
 </html>

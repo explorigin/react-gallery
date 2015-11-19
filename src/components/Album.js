@@ -5,9 +5,9 @@ import Thumbnail from './Thumbnail';
 
 class Album extends Component {
 	render() {
-		const { album } = this.props;
+		const { images, album } = this.props;
 
-		let thumbnails = album.images.map(image => {
+		let thumbnails = images.map(image => {
 			return <Thumbnail key={image.id} url={image.url} caption={image.name} />;
 		});
 
@@ -25,8 +25,11 @@ class Album extends Component {
 }
 
 function select(state) {
+	let album = state.albumsById[state.router.params.albumId];
+
 	return {
-		album: state.albumsById[state.router.params.albumId]
+		album: album,
+		images: album.images.map(imageId => state.imagesById[imageId])
 	};
 }
 

@@ -1,7 +1,7 @@
 {
   "name": "Gallery",
   "version": "0.0.1",
-	"description": "Gallery project to learn React+Redux and associate tools",
+  "description": "Gallery project to learn React+Redux and associate tools",
   "scripts": {
     "build": "NODE_ENV=\"production\" webpack --progress --profile --colors",
     "dev": "webpack-dev-server --progress --profile --colors --hot"
