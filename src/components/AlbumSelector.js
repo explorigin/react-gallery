@@ -5,18 +5,24 @@ import { connect } from 'react-redux';
 import FontAwesome from 'react-fontawesome';
 
 import Thumbnail from './Thumbnail';
-import NewAlbumDialog from './components/NewAlbumDialog';
 
 class AlbumSelector extends Component {
 	render() {
 		const { albums, images, children } = this.props;
 
-
 		let thumbnails = albums.map(album => {
+			let albumUrl;
+			if (album.showcase === null) {
+				// FIXME - hardcoded placeholder
+				albumUrl = 'http://placekitten.com/g/320/220';
+			} else {
+				albumUrl = images[album.images[album.showcase]].url;
+			}
+
 			return (
 				<Thumbnail
 					key={album.id}
-					url={images[album.images[album.showcase]].url}
+					url={albumUrl}
 					link={'/album/' + album.id}
 					caption={album.name}
 				/>
@@ -27,7 +33,15 @@ class AlbumSelector extends Component {
 			<div className="album-selector">
 				<main>
 					{thumbnails}
+					<Thumbnail
+						key='add'
+						link={'/album/new'}
+						caption='Add New'
+					>
+						<FontAwesome name='rocket' />
+					</Thumbnail>
 				</main>
+				{children}
 			</div>
 		);
 	}

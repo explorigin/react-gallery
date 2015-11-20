@@ -12,6 +12,7 @@ import RootReducer from './reducers/Root';
 import NotFound from './components/NotFound';
 import AlbumSelector from './components/AlbumSelector';
 import Album from './components/Album';
+import NewAlbumDialog from './components/NewAlbumDialog';
 
 const reduxRouter = reduxReactRouter({ createHistory });
 const createStoreWithMiddleware = compose(reduxRouter)(createStore);
@@ -20,8 +21,10 @@ const store = createStoreWithMiddleware(RootReducer, window.initialState);
 render((
 	<Provider store={store}>
 		<ReduxRouter>
-			<Route path="/" component={AlbumSelector} />
-			<Route path="/album/:albumId" component={Album} />
+			<Route path="/" component={AlbumSelector}>
+				<Route path="/album/new" component={NewAlbumDialog} />
+			</Route>
+			<Route path="/album/:albumId" component={Album}/>
 			<Route path="*" component={NotFound} />
 		</ReduxRouter>
 	</Provider>

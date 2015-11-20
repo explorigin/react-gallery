@@ -8,7 +8,8 @@ export function albumReducer(state = {}, action) {
 				[action.id]: {
 					id: action.id,
 					name: action.name,
-					showcase: action.showcase
+					showcase: action.showcase,
+					images: []
 				}
 			}
 		);
