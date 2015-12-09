@@ -6,10 +6,10 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { ReduxRouter, reduxReactRouter } from 'redux-router';
 import createLogger from 'redux-logger';
+import persistentStore from 'persistent-redux';
 import PouchDB from 'pouchdb';
 
 import RootReducer from './reducers/Root';
-import persistentStore from './middlewares/persistentStore';
 
 // Route-Target Components
 import NotFound from './components/NotFound';
@@ -17,9 +17,12 @@ import AlbumSelector from './components/AlbumSelector';
 import Album from './components/Album';
 import NewAlbumDialog from './components/NewAlbumDialog';
 
-const db = new PouchDB('gallery');
+const options = {
+	db: new PouchDB('gallery'),
+	ignoreAction: ((action) => action.type.indexOf('@@reduxReactRouter') === 0)
+};
 
-persistentStore({db}).then((persistentMiddleware) => {
+persistentStore(options).then((persistentMiddleware) => {
 	const createStoreWithMiddleware = compose(
 		reduxReactRouter({ createHistory }),
 		applyMiddleware(createLogger()),

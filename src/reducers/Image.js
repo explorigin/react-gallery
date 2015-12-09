@@ -1,29 +1,19 @@
-// import { ADD_ALBUM } from '../actions';
+import { ADD_IMAGE } from '../actions';
 
 export function imageReducer(state = {}, action) {
-	switch(action.type) {
-	// case ADD_ALBUM:
-	// 	return Object.assign({}, state,
-	// 		{
-	// 			[action.id]: {
-	// 				id: action.id,
-	// 				name: action.name,
-	// 				showcase: action.showcase
-	// 			}
-	// 		}
-	// 	);
-	default:
-		return state;
-	}
-}
+	let { type, payload } = action;
 
-export function imageListReducer(state = [], action) {
-	switch(action.type) {
-	// case ADD_ALBUM:
-	// 	return [
-	// 		...state,
-	// 		action.id
-	// 	];
+	switch(type) {
+	case ADD_IMAGE:
+		return {
+			...state,
+			[payload.id]: {
+				id: payload.id,
+				name: payload.name,
+				url: payload.url,
+				blob: payload.blob
+			}
+		};
 	default:
 		return state;
 	}

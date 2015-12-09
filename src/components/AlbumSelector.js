@@ -34,11 +34,11 @@ class AlbumSelector extends Component {
 				<main>
 					{thumbnails}
 					<Thumbnail
-						key='add'
+						key={'add'}
 						link={'/album/new'}
-						caption='Add New'
+						caption={'Add New'}
 					>
-						<FontAwesome name='rocket' />
+						<FontAwesome name={'rocket'} />
 					</Thumbnail>
 				</main>
 				{children}

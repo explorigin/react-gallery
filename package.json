@@ -1,35 +1,37 @@
 {
-	"name": "Gallery",
-	"version": "0.0.1",
-	"description": "Gallery project to learn React+Redux and associate tools",
-	"scripts": {
-		"build": "NODE_ENV=\"production\" webpack --progress --profile --colors",
-		"dev": "webpack-dev-server --progress --profile --colors --hot"
-	},
-	"dependencies": {
-		"babel-core": "5.8.34",
-		"babel-loader": "5.4.0",
-		"babel-plugin-transform-runtime": "^6.1.18",
-		"bootstrap": "3.3.5",
-		"eslint": "1.9.0",
-		"eslint-loader": "^1.1.1",
-		"eslint-plugin-react": "^3.8.0",
-		"history": "1.13.1",
-		"linear-partitioning": "0.3.1",
-		"pouchdb": "^5.1.0",
-		"react": "0.14.2",
-		"react-dom": "0.14.2",
-		"react-fontawesome": "0.3.3",
-		"react-redux": "4.0.0",
-		"react-router": "1.0.0",
-		"redux": "3.0.4",
-		"redux-router": "1.0.0-beta4",
-		"uglifyjs": "2.4.10",
-		"webpack": "1.12.6"
-	},
-	"devDependencies": {
-		"react-hot-loader": "1.3.0",
-		"redux-logger": "^2.0.4",
-		"webpack-dev-server": "1.12.1"
-	}
+  "name": "Gallery",
+  "version": "0.0.1",
+  "description": "Gallery project to learn React+Redux and associate tools",
+  "scripts": {
+    "build": "NODE_ENV=\"production\" webpack --progress --profile --colors",
+    "dev": "webpack-dev-server --progress --profile --colors --hot"
+  },
+  "dependencies": {
+    "babel-core": "5.8.34",
+    "babel-loader": "5.4.0",
+    "babel-plugin-transform-runtime": "^6.1.18",
+    "bootstrap": "3.3.5",
+    "eslint": "1.9.0",
+    "eslint-loader": "^1.1.1",
+    "eslint-plugin-react": "^3.8.0",
+    "history": "1.13.1",
+    "linear-partitioning": "0.3.1",
+    "persistent-redux": "^0.6.0",
+    "pouchdb": "^5.1.0",
+    "react": "0.14.2",
+    "react-dom": "0.14.2",
+    "react-dropzone": "^3.1.0",
+    "react-fontawesome": "0.3.3",
+    "react-redux": "4.0.0",
+    "react-router": "1.0.0",
+    "redux": "3.0.4",
+    "redux-router": "1.0.0-beta4",
+    "uglifyjs": "2.4.10",
+    "webpack": "1.12.6"
+  },
+  "devDependencies": {
+    "react-hot-loader": "1.3.0",
+    "redux-logger": "^2.0.4",
+    "webpack-dev-server": "1.12.1"
+  }
 }

@@ -12,7 +12,7 @@ class NewAlbumDialog extends Component {
 		let action = addAlbum(this.refs.albumName.value, null);
 		dispatch(action);
 		this.refs.albumName.value = '';
-		dispatch(replaceState(null, '/album/' + action.id));
+		dispatch(replaceState(null, '/album/' + action.payload.id));
 	}
 
 	render() {
