@@ -1,7 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Route } from 'react-router';
-import { createHistory } from 'history';
+// import { createHistory } from 'history';
+import createHistory from 'history/lib/createHashHistory';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { ReduxRouter, reduxReactRouter } from 'redux-router';

@@ -23,6 +23,6 @@ export default class Thumbnail extends Component {
 			);
 		};
 
-		return link ? linkWrap(figure()) : figure(key);
+		return link ? linkWrap(figure(key)) : figure(key);
 	}
 }

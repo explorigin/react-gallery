@@ -2,6 +2,8 @@ import React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone';
+import FontAwesome from 'react-fontawesome';
+
 import Thumbnail from './Thumbnail';
 
 import { addImage } from '../actions';
@@ -59,6 +61,8 @@ class Album extends Component {
 			>
 				<header>
 					<h1>{album.name}</h1>
+					<FontAwesome name={'upload'} />
+
 				</header>
 				<main>
 					{thumbnails}
