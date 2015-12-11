@@ -21,7 +21,8 @@ import NewAlbumDialog from './components/NewAlbumDialog';
 
 const options = {
 	db: new PouchDB('gallery'),
-	ignoreAction: ((action) => action.type.indexOf('@@reduxReactRouter') === 0)
+	ignoreAction: ((action) => action.type.indexOf('@@reduxReactRouter') === 0),
+	blobSupport: true
 };
 
 persistentStore(options).then((persistentMiddleware) => {
