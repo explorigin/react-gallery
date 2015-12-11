@@ -1,27 +1,14 @@
 import React from 'react';
-import { Component } from 'react';
 import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone';
 import FontAwesome from 'react-fontawesome';
 
+import ObjectURLManager from './ObjectURLManager';
 import Thumbnail from './Thumbnail';
 
 import { addImage } from '../actions';
 
-class Album extends Component {
-	constructor() {
-		super();
-
-		this.imageUrls = new Map();
-	}
-
-	componentWillUnmount() {
-		for (let url of this.imageUrls.values()) {
-			URL.revokeObjectURL(url);
-		}
-		this.imageUrls.clear();
-	}
-
+class Album extends ObjectURLManager {
 	fileDropped(files) {
 		let { album, dispatch } = this.props;
 		files.forEach((f) => {
@@ -38,11 +25,8 @@ class Album extends Component {
 		const { images, album } = this.props;
 
 		let thumbnails = images.map(image => {
-			let url = image.url || this.imageUrls.get(image);
-			if (!url) {
-				url = URL.createObjectURL(image.blob.data);
-				this.imageUrls.set(image, url);
-			}
+			let url = image.url || this.getObjectUrl(image);
+
 			return (
 				<Thumbnail
 					key={image.id}
