@@ -23,7 +23,7 @@ class AlbumSelector extends Component {
 				<Thumbnail
 					key={album.id}
 					url={albumUrl}
-					link={'/album/' + album.id}
+					link={`/album/${album.id}`}
 					caption={album.name}
 				/>
 			);

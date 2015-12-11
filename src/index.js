@@ -16,6 +16,7 @@ import RootReducer from './reducers/Root';
 import NotFound from './components/NotFound';
 import AlbumSelector from './components/AlbumSelector';
 import Album from './components/Album';
+import ImageView from './components/ImageView';
 import NewAlbumDialog from './components/NewAlbumDialog';
 
 const options = {
@@ -39,6 +40,7 @@ persistentStore(options).then((persistentMiddleware) => {
 					<Route path="/album/new" component={NewAlbumDialog} />
 				</Route>
 				<Route path="/album/:albumId" component={Album}/>
+				<Route path="/album/:albumId/:imageIndex" component={ImageView}/>
 				<Route path="*" component={NotFound} />
 			</ReduxRouter>
 		</Provider>

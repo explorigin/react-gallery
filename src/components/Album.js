@@ -9,6 +9,10 @@ import Thumbnail from './Thumbnail';
 import { addImage } from '../actions';
 
 class Album extends ObjectURLManager {
+	onOpenClick() {
+		this.refs.dropzone.open();
+	}
+
 	fileDropped(files) {
 		let { album, dispatch } = this.props;
 		files.forEach((f) => {
@@ -24,13 +28,14 @@ class Album extends ObjectURLManager {
 	render() {
 		const { images, album } = this.props;
 
-		let thumbnails = images.map(image => {
+		let thumbnails = images.map((image, index) => {
 			let url = image.url || this.getObjectUrl(image);
 
 			return (
 				<Thumbnail
 					key={image.id}
 					url={url}
+					link={`/album/${album.id}/${index}`}
 					caption={image.name}
 				/>
 			);
@@ -38,14 +43,20 @@ class Album extends ObjectURLManager {
 
 		return (
 			<Dropzone
-				onDrop={this.fileDropped.bind(this)}
 				className={'album-view'}
 				activeClassName={'active'}
+				onDrop={this.fileDropped.bind(this)}
+				ref="dropzone"
 				multiple
+				disableClick
 			>
 				<header>
-					<h1>{album.name}</h1>
-					<FontAwesome name={'upload'} />
+					<h1>
+						{album.name}
+						<button onClick={this.onOpenClick.bind(this)}>
+							<FontAwesome name={'upload'} />
+						</button>
+					</h1>
 
 				</header>
 				<main>
