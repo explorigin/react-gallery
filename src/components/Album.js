@@ -50,18 +50,20 @@ class Album extends ObjectURLManager {
 				multiple
 				disableClick
 			>
-				<header>
-					<h1>
-						{album.name}
-						<button onClick={this.onOpenClick.bind(this)}>
-							<FontAwesome name={'upload'} />
-						</button>
-					</h1>
+				<div>
+					<header>
+						<h1>
+							{album.name}
+							<button onClick={this.onOpenClick.bind(this)}>
+								<FontAwesome name={'upload'} />
+							</button>
+						</h1>
 
-				</header>
-				<main>
-					{thumbnails}
-				</main>
+					</header>
+					<main>
+						{thumbnails}
+					</main>
+				</div>
 			</Dropzone>
 		);
 	}

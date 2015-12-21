@@ -7,7 +7,7 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { ReduxRouter, reduxReactRouter } from 'redux-router';
 import createLogger from 'redux-logger';
-import persistentStore from 'persistent-redux';
+import { persistentStore } from 'persistent-redux';
 import PouchDB from 'pouchdb';
 
 import RootReducer from './reducers/Root';
@@ -21,7 +21,7 @@ import NewAlbumDialog from './components/NewAlbumDialog';
 
 const options = {
 	db: new PouchDB('gallery'),
-	ignoreAction: ((action) => action.type.indexOf('@@reduxReactRouter') === 0),
+	actionFilter: ((action) => action.type.indexOf('@@reduxReactRouter') !== 0),
 	blobSupport: true
 };
 
