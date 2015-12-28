@@ -2,6 +2,12 @@
   "name": "Gallery",
   "version": "0.0.1",
   "description": "Gallery project to learn React+Redux and associate tools",
+  "repository": {
+    "type": "git",
+    "url":"https://github.com/explorigin/react-gallery.git"
+  },
+  "license": "UNLICENSED",
+  "private": true,
   "scripts": {
     "build": "NODE_ENV=\"production\" webpack --progress --profile --colors",
     "dev": "webpack-dev-server --progress --profile --colors --hot"
