@@ -1,4 +1,4 @@
-import { ADD_IMAGE } from '../actions';
+import { ADD_IMAGE, REMOVE_IMAGE } from '../actions';
 
 export function imageReducer(state = {}, action) {
 	let { type, payload } = action;
@@ -14,6 +14,10 @@ export function imageReducer(state = {}, action) {
 				blob: payload.blob
 			}
 		};
+	case REMOVE_IMAGE:
+		let newState = {...state};
+		delete newState[payload.id];
+		return newState;
 	default:
 		return state;
 	}

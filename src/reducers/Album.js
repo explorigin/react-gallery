@@ -1,6 +1,8 @@
-import { ADD_ALBUM, ADD_IMAGE } from '../actions';
+import { ADD_ALBUM, ADD_IMAGE, REMOVE_IMAGE } from '../actions';
 
 export function albumReducer(state = {}, action) {
+	var newState;
+
 	let { type, payload } = action;
 
 	switch(type) {
@@ -15,8 +17,16 @@ export function albumReducer(state = {}, action) {
 			}
 		};
 	case ADD_IMAGE:
-		let newState = {...state};
+		newState = {...state};
 		newState[payload.albumId].images.push(payload.id);
+		return newState;
+	case REMOVE_IMAGE:
+		newState = {...state};
+		let album = newState[payload.albumId];
+		let index = album.images.indexOf(payload.id);
+		if (index !== -1) {
+			album.images.splice(index, 1);
+		}
 		return newState;
 	default:
 		return state;

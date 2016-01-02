@@ -6,21 +6,20 @@ import { replaceState } from 'redux-router';
 import { addAlbum } from '../actions';
 
 class NewAlbumDialog extends Component {
-	onSubmit(dispatch, evt) {
+	onSubmit(evt) {
 		evt.preventDefault();
+
+		let { dispatch } = this.props;
 
 		let action = addAlbum(this.refs.albumName.value, null);
 		dispatch(action);
 		this.refs.albumName.value = '';
-		dispatch(replaceState(null, '/album/' + action.payload.id));
+		dispatch(replaceState(null, `/album/${action.payload.id}`));
 	}
 
 	render() {
-		let { dispatch } = this.props;
-		let onSubmit = this.onSubmit.bind(this, dispatch);
-
 		return (
-			<form onSubmit={onSubmit}>
+			<form onSubmit={this.onSubmit.bind(this)}>
 				<h1>{"Hi...I'm a new Album"}</h1>
 				<input type="text" ref="albumName" autoFocus />
 				<button type="submit">{"Add"}</button>

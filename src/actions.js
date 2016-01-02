@@ -2,6 +2,7 @@ import { getUniqueID } from './utils';
 
 export const ADD_ALBUM = 'ADD_ALBUM';
 export const ADD_IMAGE = 'ADD_IMAGE';
+export const REMOVE_IMAGE = 'REMOVE_IMAGE';
 
 export function addAlbum(name, showcase) {
 	return {
@@ -11,6 +12,16 @@ export function addAlbum(name, showcase) {
 			images: [],
 			name,
 			showcase
+		}
+	};
+}
+
+export function removeImage(id, albumId) {
+	return {
+		type: REMOVE_IMAGE,
+		payload: {
+			id,
+			albumId
 		}
 	};
 }
