@@ -4,7 +4,7 @@
   "description": "Gallery project to learn React+Redux and associate tools",
   "repository": {
     "type": "git",
-    "url":"https://github.com/explorigin/react-gallery.git"
+    "url": "https://github.com/explorigin/react-gallery.git"
   },
   "license": "UNLICENSED",
   "private": true,
@@ -33,6 +33,7 @@
     "react-router": "1.0.0",
     "redux": "3.0.4",
     "redux-router": "1.0.0-beta4",
+    "redux-thunk": "^1.0.3",
     "uglifyjs": "2.4.10",
     "webpack": "1.12.6"
   },

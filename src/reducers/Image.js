@@ -11,7 +11,9 @@ export function imageReducer(state = {}, action) {
 				id: payload.id,
 				name: payload.name,
 				url: payload.url,
-				blob: payload.blob
+				blob: payload.blob,
+				width: payload.width,
+				height: payload.height
 			}
 		};
 	case REMOVE_IMAGE:

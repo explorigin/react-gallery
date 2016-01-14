@@ -6,6 +6,7 @@ import createHistory from 'history/lib/createHashHistory';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { ReduxRouter, reduxReactRouter } from 'redux-router';
+import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import { persistentStore } from 'persistent-redux';
 import PouchDB from 'pouchdb';
@@ -28,7 +29,7 @@ const options = {
 persistentStore(options).then((persistentMiddleware) => {
 	const createStoreWithMiddleware = compose(
 		reduxReactRouter({ createHistory }),
-		applyMiddleware(createLogger()),
+		applyMiddleware(createLogger(), thunk),
 		persistentMiddleware
 	)(createStore);
 

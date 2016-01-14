@@ -27,7 +27,7 @@ export function removeImage(id, albumId) {
 }
 
 export function addImage(albumId, name, url, blob) {
-	let action = {
+	const action = {
 		type: ADD_IMAGE,
 		payload: {
 			albumId,
@@ -39,7 +39,25 @@ export function addImage(albumId, name, url, blob) {
 	};
 
 	if (blob) {
-		action._attachments = ['payload.blob'];
+		return (next /*, getState */) => {
+			action._attachments = ['payload.blob'];
+
+			const img = new Image();
+			const url = URL.createObjectURL(blob);
+
+			img.onload = () => {
+				URL.revokeObjectURL(url);
+				action.payload = {
+					width: img.width,
+					height: img.height,
+					...action.payload
+				};
+				next(action);
+			};
+
+			img.src = url;
+		};
+	} else {
+		return action;
 	}
-	return action;
 }
