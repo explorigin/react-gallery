@@ -29,7 +29,9 @@ class Album extends ObjectURLManager {
 		const { images, album } = this.props;
 
 		let thumbnails = images.map((image, index) => {
-			let url = image.url || this.getObjectUrl(image);
+			let url = image.thumbnail
+				? this.getObjectUrl(`${image.id}-full`, image.blob)
+				: url || this.getObjectUrl(`${image.id}-full`, image.blob);
 
 			return (
 				<Thumbnail
@@ -37,6 +39,8 @@ class Album extends ObjectURLManager {
 					url={url}
 					link={`/album/${album.id}/${index}`}
 					caption={image.name}
+					width={image.width}
+					height={image.height}
 				/>
 			);
 		});

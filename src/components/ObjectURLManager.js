@@ -14,11 +14,11 @@ export default class ObjectURLManager extends Component {
 		this.objectUrls.clear();
 	}
 
-	getObjectUrl(img) {
-		let url = this.objectUrls.get(img);
+	getObjectUrl(id, img) {
+		let url = this.objectUrls.get(id);
 		if (!url) {
-			url = URL.createObjectURL(img.blob.data);
-			this.objectUrls.set(img, url);
+			url = URL.createObjectURL(img.data);
+			this.objectUrls.set(id, url);
 		}
 		return url;
 	}

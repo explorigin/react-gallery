@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { pushState, replaceState } from 'redux-router';
+import { Link } from 'react-router';
 
 import FontAwesome from 'react-fontawesome';
 
@@ -39,19 +40,24 @@ class ImageView extends ObjectURLManager {
 	}
 
 	render() {
-		let { image } = this.props,
-			url = image.src || this.getObjectUrl(image);
+		let { image, album } = this.props,
+			url = image.url || this.getObjectUrl(image.id, image.blob);
 
 		return (
-			<figure {...this.props} >
-				<img src={url} />
-				<figcaption>
-					<button onClick={this.prevImage.bind(this)} disabled={this.isFirstImage()}><FontAwesome name={'angle-double-left'} /></button>
-					{image.name}
-					<button onClick={this.nextImage.bind(this)} disabled={this.isLastImage()}><FontAwesome name={'angle-double-right'} /></button>
-					<button onClick={this.removeImage.bind(this)}><FontAwesome name={'remove'} /></button>
-				</figcaption>
-			</figure>
+			<div {...this.props}>
+				<Link to={`/album/${album.id}`}>
+					<FontAwesome name={'arrow-left'} />
+				</Link>
+				<figure>
+					<img src={url}/>
+					<figcaption>
+						<button onClick={this.prevImage.bind(this)} disabled={this.isFirstImage()}><FontAwesome name={'angle-double-left'} /></button>
+						{image.name}
+						<button onClick={this.nextImage.bind(this)} disabled={this.isLastImage()}><FontAwesome name={'angle-double-right'} /></button>
+						<button onClick={this.removeImage.bind(this)}><FontAwesome name={'remove'} /></button>
+					</figcaption>
+				</figure>
+			</div>
 		);
 	}
 }
