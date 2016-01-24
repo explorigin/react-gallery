@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone';
 import FontAwesome from 'react-fontawesome';
+import { Link } from 'react-router';
 
 import ObjectURLManager from './ObjectURLManager';
 import Thumbnail from './Thumbnail';
@@ -48,15 +49,18 @@ class Album extends ObjectURLManager {
 		});
 
 		return (
-			<Dropzone
-				className={'album-view'}
-				activeClassName={'active'}
-				onDrop={this.fileDropped.bind(this)}
-				ref="dropzone"
-				multiple
-				disableClick
-			>
-				<div>
+			<div>
+				<Link to={`/`}>
+					<FontAwesome name={'arrow-left'} />
+				</Link>
+				<Dropzone
+					className={'album-view'}
+					activeClassName={'active'}
+					onDrop={this.fileDropped.bind(this)}
+					ref="dropzone"
+					multiple
+					disableClick
+				>
 					<header>
 						<h1>
 							{album.name}
@@ -69,8 +73,8 @@ class Album extends ObjectURLManager {
 					<main className={styles.albumMain}>
 						{thumbnails}
 					</main>
-				</div>
-			</Dropzone>
+				</Dropzone>
+			</div>
 		);
 	}
 }

@@ -1,7 +1,5 @@
 import React from 'react';
-import { Component } from 'react';
 import { connect } from 'react-redux';
-
 import FontAwesome from 'react-fontawesome';
 
 import styles from '../styles/AlbumSelector.css';
@@ -14,22 +12,29 @@ class AlbumSelector extends ObjectURLManager {
 		const { albums, images, children } = this.props;
 
 		let thumbnails = albums.map(album => {
-			let albumUrl;
-			if (album.showcase === null) {
-				// FIXME - hardcoded placeholder
-				albumUrl = 'http://placekitten.com/g/320/220';
-			} else {
-				albumUrl = images[album.images[album.showcase]].url;
+			try {
+				let image = images[album.images[album.showcase]];
+				let albumUrl = image.url || this.getObjectUrl(image.id, image.blob);
+				return (
+					<Thumbnail
+						key={album.id}
+						url={albumUrl}
+						link={`/album/${album.id}`}
+						caption={album.name}
+					/>
+				);
+			} catch (e) {
+				console.log(e);
+				return (
+					<Thumbnail
+						key={album.id}
+						link={`/album/${album.id}`}
+						caption={album.name}
+					>
+						<FontAwesome name={'rocket'} />
+					</Thumbnail>
+				);
 			}
-
-			return (
-				<Thumbnail
-					key={album.id}
-					url={albumUrl}
-					link={`/album/${album.id}`}
-					caption={album.name}
-				/>
-			);
 		});
 
 		return (
