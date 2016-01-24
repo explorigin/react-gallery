@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var isProduction = process.env.NODE_ENV == 'production';
 
@@ -13,6 +14,9 @@ var uglifyJSOptions = {
 	"mangle": true,
 };
 
+var commonPlugins = [
+  new ExtractTextPlugin('css/app.css', { allChunks: true })
+];
 var plugins = isProduction ? [
   new webpack.optimize.DedupePlugin(),
   new webpack.optimize.UglifyJsPlugin(uglifyJSOptions),
@@ -47,6 +51,13 @@ module.exports = {
                 test: /\.js?$/,
                 exclude: /node_modules/,
                 loaders: ['react-hot', 'babel'],
+            },
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract(
+                    'style',
+                    'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+                )
             }
         ]
     },
@@ -56,5 +67,5 @@ module.exports = {
         hot: true,
         inline: true
     },
-    plugins: plugins
+    plugins: commonPlugins.concat(plugins)
 };

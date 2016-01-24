@@ -4,9 +4,12 @@ import { connect } from 'react-redux';
 
 import FontAwesome from 'react-fontawesome';
 
+import styles from '../styles/AlbumSelector.css';
+
+import ObjectURLManager from './ObjectURLManager';
 import Thumbnail from './Thumbnail';
 
-class AlbumSelector extends Component {
+class AlbumSelector extends ObjectURLManager {
 	render() {
 		const { albums, images, children } = this.props;
 
@@ -30,8 +33,8 @@ class AlbumSelector extends Component {
 		});
 
 		return (
-			<div className="album-selector">
-				<main>
+			<div>
+				<main className={styles.albumSelectorMain}>
 					{thumbnails}
 					<Thumbnail
 						key={'add'}

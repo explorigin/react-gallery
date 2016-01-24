@@ -6,6 +6,8 @@ import FontAwesome from 'react-fontawesome';
 import ObjectURLManager from './ObjectURLManager';
 import Thumbnail from './Thumbnail';
 
+import styles from '../styles/Album.css';
+
 import { addImage } from '../actions';
 
 class Album extends ObjectURLManager {
@@ -64,7 +66,7 @@ class Album extends ObjectURLManager {
 						</h1>
 
 					</header>
-					<main>
+					<main className={styles.albumMain}>
 						{thumbnails}
 					</main>
 				</div>

@@ -1,0 +1,3 @@
+.albumSelectorMain {
+  composes: selectorMain from './Selectors.css';
+}
