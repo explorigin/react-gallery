@@ -1,0 +1,22 @@
+.link {
+  text-decoration: none;
+}
+
+.figure {
+  margin: 0.5em;
+}
+
+.image {
+  vertical-align: top;
+}
+
+.caption {
+  transform: translateY(-100%);
+  padding: 0.25em;
+  color: white;
+  text-shadow: 0 0 10px black;
+}
+
+.caption:hover {
+  background-color: black;
+}

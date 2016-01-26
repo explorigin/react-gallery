@@ -54,8 +54,8 @@ class Album extends ObjectURLManager {
 					<FontAwesome name={'arrow-left'} />
 				</Link>
 				<Dropzone
-					className={'album-view'}
-					activeClassName={'active'}
+					className={styles.dropzone}
+					activeClassName={styles.dropzoneActive}
 					onDrop={this.fileDropped.bind(this)}
 					ref="dropzone"
 					multiple
@@ -70,7 +70,7 @@ class Album extends ObjectURLManager {
 						</h1>
 
 					</header>
-					<main className={styles.albumMain}>
+					<main className={styles.main}>
 						{thumbnails}
 					</main>
 				</Dropzone>

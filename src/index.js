@@ -20,6 +20,11 @@ import Album from './components/Album';
 import ImageView from './components/ImageView';
 import NewAlbumDialog from './components/NewAlbumDialog';
 
+import styles from './styles/App.css';
+
+const rootElement = document.getElementById('app');
+rootElement.className = styles.main;
+
 const options = {
 	db: new PouchDB('gallery'),
 	actionFilter: ((action) => action.type.indexOf('@@reduxReactRouter') !== 0),
@@ -33,7 +38,7 @@ persistentStore(options).then((persistentMiddleware) => {
 		persistentMiddleware
 	)(createStore);
 
-	let store = createStoreWithMiddleware(RootReducer);
+	const store = createStoreWithMiddleware(RootReducer);
 
 	render((
 		<Provider store={store}>
@@ -46,7 +51,7 @@ persistentStore(options).then((persistentMiddleware) => {
 				<Route path="*" component={NotFound} />
 			</ReduxRouter>
 		</Provider>
-	), document.getElementById('app'));
+	), rootElement);
 }).catch((err) => {
 	alert('Could not initialize PouchDB middleware.');
 	console.error(err);

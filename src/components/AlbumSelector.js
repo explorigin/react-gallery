@@ -31,7 +31,7 @@ class AlbumSelector extends ObjectURLManager {
 						link={`/album/${album.id}`}
 						caption={album.name}
 					>
-						<FontAwesome name={'rocket'} />
+						<FontAwesome name={'image'} />
 					</Thumbnail>
 				);
 			}
@@ -46,7 +46,7 @@ class AlbumSelector extends ObjectURLManager {
 						link={'/album/new'}
 						caption={'Add New'}
 					>
-						<FontAwesome name={'rocket'} />
+						<FontAwesome name={'plus'} />
 					</Thumbnail>
 				</main>
 				{children}

@@ -1,28 +1,25 @@
-import React from 'react';
 import { Component } from 'react';
-import { Link } from 'react-router';
+
+import LinkWrap from './LinkWrap';
+import Figure from './Figure';
+import styles from '../styles/Thumbnail.css';
 
 export default class Thumbnail extends Component {
 	render() {
-		let { key, url, caption, link, children, width, height} = this.props;
+		let { link, key } = this.props;
+		let figure = Figure(this.props);
 
-		let linkWrap = (children) => {
-			return (
-				<Link to={link} key={key} className="thumbnail">
-					{children}
-				</Link>
+		if (link) {
+			return LinkWrap(
+				{
+					to: link,
+					className: styles.link,
+					key: key,
+					children: figure
+				}
 			);
-		};
+		}
 
-		let figure = (key) => {
-			return (
-				<figure key={key} >
-					{url ? <img src={url} width={width/4} height={height/4} /> : children}
-					<figcaption>{caption}</figcaption>
-				</figure>
-			);
-		};
-
-		return link ? linkWrap(figure(key)) : figure(key);
+		return figure;
 	}
 }

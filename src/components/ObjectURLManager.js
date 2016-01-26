@@ -1,25 +1,21 @@
 import { Component } from 'react';
 
 export default class ObjectURLManager extends Component {
-	constructor() {
-		super();
-
-		this.objectUrls = new Map();
-	}
-
 	componentWillUnmount() {
-		for (let url of this.objectUrls.values()) {
+		for (let url of ObjectURLManager.urls.values()) {
 			URL.revokeObjectURL(url);
 		}
-		this.objectUrls.clear();
+		ObjectURLManager.urls.clear();
 	}
 
 	getObjectUrl(id, img) {
-		let url = this.objectUrls.get(id);
+		let url = ObjectURLManager.urls.get(id);
 		if (!url) {
 			url = URL.createObjectURL(img.data);
-			this.objectUrls.set(id, url);
+			ObjectURLManager.urls.set(id, url);
 		}
 		return url;
 	}
 }
+
+ObjectURLManager.urls = new Map();

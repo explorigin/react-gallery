@@ -1,3 +1,11 @@
-.albumMain {
+.main {
   composes: selectorMain from './Selectors.css';
+}
+
+.dropzone {
+  border: none;
+}
+
+.dropzoneActive {
+
 }
