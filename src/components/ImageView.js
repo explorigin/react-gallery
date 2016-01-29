@@ -9,35 +9,35 @@ import ObjectURLManager from './ObjectURLManager';
 import { removeImage } from '../actions';
 
 class ImageView extends ObjectURLManager {
-	isLastImage() {
+	isLastImage = () => {
 		let { album, imageIndex } = this.props;
 		return album.images.length - 1 <= imageIndex;
-	}
+	};
 
-	isFirstImage() {
+	isFirstImage = () => {
 		let { imageIndex } = this.props;
 		return imageIndex === 0;
-	}
+	};
 
-	nextImage() {
+	nextImage = () => {
 		let { dispatch, album, imageIndex } = this.props;
 		if (!this.isLastImage()) {
 			dispatch(pushState(null, `/album/${album.id}/${imageIndex+1}`));
 		}
-	}
+	};
 
-	prevImage() {
+	prevImage = () => {
 		let { dispatch, album, imageIndex } = this.props;
 		if (!this.isFirstImage()) {
 			dispatch(pushState(null, `/album/${album.id}/${imageIndex-1}`));
 		}
-	}
+	};
 
-	removeImage() {
+	removeImage = () => {
 		let { dispatch, album, image } = this.props;
 		dispatch(replaceState(null, `/album/${album.id}`));
 		dispatch(removeImage(image.id, album.id));
-	}
+	};
 
 	render() {
 		let { image, album } = this.props,
@@ -51,10 +51,10 @@ class ImageView extends ObjectURLManager {
 				<figure>
 					<img src={url}/>
 					<figcaption>
-						<button onClick={this.prevImage.bind(this)} disabled={this.isFirstImage()}><FontAwesome name={'angle-double-left'} /></button>
+						<button onClick={this.prevImage} disabled={this.isFirstImage()}><FontAwesome name={'angle-double-left'} /></button>
 						{image.name}
-						<button onClick={this.nextImage.bind(this)} disabled={this.isLastImage()}><FontAwesome name={'angle-double-right'} /></button>
-						<button onClick={this.removeImage.bind(this)}><FontAwesome name={'remove'} /></button>
+						<button onClick={this.nextImage} disabled={this.isLastImage()}><FontAwesome name={'angle-double-right'} /></button>
+						<button onClick={this.removeImage}><FontAwesome name={'remove'} /></button>
 					</figcaption>
 				</figure>
 			</div>

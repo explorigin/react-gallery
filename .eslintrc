@@ -1,5 +1,7 @@
 {
+	"parser": "babel-eslint",
 	"rules": {
+		"strict": 0,
 		"indent": [2, "tab"],
 		"quotes": [2, "single"],
 		"linebreak-style": [2, "unix"],
@@ -12,7 +14,7 @@
 		"react/jsx-curly-spacing": 1,
 		"react/jsx-indent-props": [1, "tab"],
 		"react/jsx-max-props-per-line": [1, {"maximum": 4}],
-		"react/jsx-no-bind": 0,
+		"react/jsx-no-bind": 1,
 		"react/jsx-no-duplicate-props": 1,
 		"react/jsx-no-literals": 1,
 		"react/jsx-no-undef": 1,
@@ -39,12 +41,6 @@
 	"env": {
 		"es6": true,
 		"browser": true
-	},
-	"extends": "eslint:recommended",
-	"ecmaFeatures": {
-		"jsx": true,
-		"modules": true,
-		"experimentalObjectRestSpread": true
 	},
 	"plugins": [
 		"react"

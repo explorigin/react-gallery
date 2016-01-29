@@ -12,11 +12,11 @@ import styles from '../styles/Album.css';
 import { addImage } from '../actions';
 
 class Album extends ObjectURLManager {
-	onOpenClick() {
+	onOpenClick = () => {
 		this.refs.dropzone.open();
-	}
+	};
 
-	fileDropped(files) {
+	fileDropped = (files) => {
 		let { album, dispatch } = this.props;
 		files.forEach((f) => {
 			dispatch(addImage(
@@ -26,7 +26,7 @@ class Album extends ObjectURLManager {
 				f
 			));
 		});
-	}
+	};
 
 	render() {
 		const { images, album } = this.props;
@@ -56,7 +56,7 @@ class Album extends ObjectURLManager {
 				<Dropzone
 					className={styles.dropzone}
 					activeClassName={styles.dropzoneActive}
-					onDrop={this.fileDropped.bind(this)}
+					onDrop={this.fileDropped}
 					ref="dropzone"
 					multiple
 					disableClick
@@ -64,7 +64,7 @@ class Album extends ObjectURLManager {
 					<header>
 						<h1>
 							{album.name}
-							<button onClick={this.onOpenClick.bind(this)}>
+							<button onClick={this.onOpenClick}>
 								<FontAwesome name={'upload'} />
 							</button>
 						</h1>
