@@ -50,14 +50,14 @@ class Album extends ObjectURLManager {
 
 		return (
 			<div>
-				<Link to={`/`}>
+				<Link to={'/'}>
 					<FontAwesome name={'arrow-left'} />
 				</Link>
 				<Dropzone
 					className={styles.dropzone}
 					activeClassName={styles.dropzoneActive}
 					onDrop={this.fileDropped}
-					ref="dropzone"
+					ref={'dropzone'}
 					multiple
 					disableClick
 				>

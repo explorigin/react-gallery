@@ -9,6 +9,7 @@ import { ReduxRouter, reduxReactRouter } from 'redux-router';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import { persistentStore } from 'persistent-redux';
+import { PouchDBAdapter } from 'persistent-redux/lib/adapters';
 import PouchDB from 'pouchdb';
 
 import RootReducer from './reducers/Root';
@@ -23,12 +24,12 @@ import NewAlbumDialog from './components/NewAlbumDialog';
 import styles from './styles/App.css';
 
 const rootElement = document.getElementById('app');
+const db = new PouchDB('gallery');
 rootElement.className = styles.main;
 
 const options = {
-	db: new PouchDB('gallery'),
+	adapter: new PouchDBAdapter(db, { blobSupport: true }),
 	actionFilter: ((action) => action.type.indexOf('@@reduxReactRouter') !== 0),
-	blobSupport: true
 };
 
 persistentStore(options).then((persistentMiddleware) => {
