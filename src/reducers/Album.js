@@ -31,7 +31,7 @@ export function albumReducer(state = {}, action) {
 			album.images.splice(index, 1);
 		}
 		if (index === album.showcase) {
-			album.showcase = null;
+			album.showcase = album.images.length ? album.images.length - 1 : null;
 		}
 		return newState;
 	default:
