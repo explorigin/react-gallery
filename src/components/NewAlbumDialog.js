@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { replaceState } from 'redux-router';
+import { replace } from 'react-router-redux';
 
 import { addAlbum } from '../actions';
 
@@ -14,7 +14,7 @@ class NewAlbumDialog extends Component {
 		let action = addAlbum(this.refs.albumName.value, null);
 		dispatch(action);
 		this.refs.albumName.value = '';
-		dispatch(replaceState(null, `/album/${action.payload.id}`));
+		dispatch(replace(`/album/${action.payload.id}`));
 	};
 
 	render() {

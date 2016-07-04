@@ -79,8 +79,8 @@ class Album extends ObjectURLManager {
 	}
 }
 
-function select(state) {
-	let album = state.albumsById[state.router.params.albumId];
+function select(state, navProps) {
+	let album = state.albumsById[navProps.params.albumId];
 
 	return {
 		album: album,

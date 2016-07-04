@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import { routerStateReducer } from 'redux-router';
+import { routerReducer } from 'react-router-redux';
 
 // Reducers
 import { albumListReducer, albumReducer } from './Album';
 import { imageReducer } from './Image';
 
 const RootReducer = combineReducers({
-	router: routerStateReducer,
+	routing: routerReducer,
 	albums: albumListReducer,
 	albumsById: albumReducer,
 	imagesById: imageReducer
