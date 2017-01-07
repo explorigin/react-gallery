@@ -1,0 +1,19 @@
+{
+    "env": {
+        "es6": true,
+        "browser": true
+    },
+    "plugins": [
+        "transform-runtime",
+        "transform-class-properties",
+        "syntax-class-properties"
+    ],
+    "presets": [
+        "react",
+        "stage-0",
+        "es2015"
+    ],
+    "ignore": [
+        "*.min.js"
+    ]
+}
