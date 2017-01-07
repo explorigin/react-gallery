@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import { persistentStore } from 'persistent-redux';
+import createHistory from 'history/createHashHistory';
 import { PouchDBAdapter } from 'persistent-redux/lib/adapters';
 import PouchDB from 'pouchdb';
 
@@ -20,6 +21,7 @@ import NewAlbumDialog from './components/NewAlbumDialog';
 
 import styles from './styles/App.css';
 
+const history = createHistory();
 const rootElement = document.getElementById('app');
 const db = new PouchDB('gallery');
 rootElement.className = styles.main;
@@ -39,12 +41,12 @@ persistentStore({
 
 	render((
 		<Provider store={store}>
-			<Router>
-				<Route path="/" component={AlbumSelector} />
-				<Route path="/album/new" component={NewAlbumDialog} />
-				<Route path="/album/:albumId" component={Album}/>
-				<Route path="/album/:albumId/:imageIndex" component={ImageView}/>
-				<Route path="*" component={NotFound} />
+			<Router history={history}>
+				<AlbumSelector path="/" />
+				<NewAlbumDialog path="/album/new" />
+				<Album path="/album/:albumId" />
+				<ImageView path="/album/:albumId/:imageIndex" />
+				<NotFound default />
 			</Router>
 		</Provider>
 	), rootElement);
