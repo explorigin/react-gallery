@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import FontAwesome from 'react-fontawesome';
 
 import styles from '../styles/AlbumSelector.css';
 
+import { Icon } from './Icon';
 import ObjectURLManager from './ObjectURLManager';
 import Thumbnail from './Thumbnail';
 
@@ -24,14 +24,13 @@ class AlbumSelector extends ObjectURLManager {
 					/>
 				);
 			} catch (e) {
-				console.log(e);
 				return (
 					<Thumbnail
 						key={album.id}
 						link={`/album/${album.id}`}
 						caption={album.name}
 					>
-						<FontAwesome name={'image'} />
+						<Icon name={'image'} />
 					</Thumbnail>
 				);
 			}
@@ -46,7 +45,7 @@ class AlbumSelector extends ObjectURLManager {
 						link={'/album/new'}
 						caption={'Add New'}
 					>
-						<FontAwesome name={'plus'} />
+						<Icon name={'upload'} />
 					</Thumbnail>
 				</main>
 				{children}

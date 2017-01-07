@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone';
-import FontAwesome from 'react-fontawesome';
 import { Link } from 'preact-router';
 
 import ObjectURLManager from './ObjectURLManager';
 import Thumbnail from './Thumbnail';
+import { Icon } from './Icon';
 
 import styles from '../styles/Album.css';
 
@@ -55,7 +55,7 @@ class Album extends ObjectURLManager {
 		return (
 			<div>
 				<Link href={'/'}>
-					<FontAwesome name={'arrow-left'} />
+					<Icon name={'arrow_left'} />
 				</Link>
 				<Dropzone
 					className={styles.dropzone}
@@ -69,7 +69,7 @@ class Album extends ObjectURLManager {
 						<h1>
 							{album.name}
 							<button onClick={this.onOpenClick}>
-								<FontAwesome name={'upload'} />
+								<Icon name={'upload'} />
 							</button>
 						</h1>
 

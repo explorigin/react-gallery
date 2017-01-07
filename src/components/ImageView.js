@@ -2,9 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, route } from 'preact-router';
 
-import FontAwesome from 'react-fontawesome';
-
 import ObjectURLManager from './ObjectURLManager';
+import { Icon } from './Icon';
 import { removeImage } from '../actions';
 
 class ImageView extends ObjectURLManager {
@@ -45,15 +44,15 @@ class ImageView extends ObjectURLManager {
 		return (
 			<div>
 				<Link href={`/album/${album.id}`}>
-					<FontAwesome name={'arrow-left'} />
+					<Icon name={'arrow_left'} />
 				</Link>
 				<figure>
 					<img src={url}/>
 					<figcaption>
-						<button onClick={this.prevImage} disabled={this.isFirstImage()}><FontAwesome name={'angle-double-left'} /></button>
+						<button onClick={this.prevImage} disabled={this.isFirstImage()}><Icon name={'chevron_left'} /></button>
 						{image.name}
-						<button onClick={this.nextImage} disabled={this.isLastImage()}><FontAwesome name={'angle-double-right'} /></button>
-						<button onClick={this.removeImage}><FontAwesome name={'remove'} /></button>
+						<button onClick={this.nextImage} disabled={this.isLastImage()}><Icon name={'chevron_right'} /></button>
+						<button onClick={this.removeImage}><Icon name={'trash'} /></button>
 					</figcaption>
 				</figure>
 			</div>
