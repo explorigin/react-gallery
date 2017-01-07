@@ -36,7 +36,11 @@ module.exports = {
         filename: 'bundle.js'
     },
     resolve: {
-        extensions: ['', '.js']
+        extensions: ['', '.js'],
+        alias: {
+            'react': 'preact-compat',
+            'react-dom': 'preact-compat'
+        }
     },
     module: {
         preLoaders: [
