@@ -40,6 +40,8 @@
     "redux": "3.6.0",
     "redux-logger": "2.7.4",
     "redux-thunk": "2.1.0",
+    "semantic-ui-reset": "^2.2.3",
+    "semantic-ui-site": "^2.2.3",
     "style-loader": "0.13.1",
     "uglifyjs": "2.4.10",
     "webpack": "1.14.0"

@@ -1,8 +1,8 @@
-.main {
-  font-family: "Trebuchet MS", Verdana, Arial, sans-serif;
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
+@import '../../node_modules/semantic-ui-reset/reset.css';
+@import '../../node_modules/semantic-ui-site/site.css';
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: "Trebuchet MS", Verdana, Arial, sans-serif;
 }
