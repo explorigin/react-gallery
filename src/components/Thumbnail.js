@@ -1,6 +1,6 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
+import { Link } from 'preact-router';
 
-import LinkWrap from './LinkWrap';
 import Figure from './Figure';
 import styles from '../styles/Thumbnail.css';
 
@@ -10,13 +10,10 @@ export default class Thumbnail extends Component {
 		let figure = Figure(this.props);
 
 		if (link) {
-			return LinkWrap(
-				{
-					to: link,
-					className: styles.link,
-					key: key,
-					children: figure
-				}
+			return (
+				<Link href={link} className={styles.link} key={key}>
+					{figure}
+				</Link>
 			);
 		}
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone';
 import FontAwesome from 'react-fontawesome';
-import { Link } from 'react-router';
+import { Link } from 'preact-router';
 
 import ObjectURLManager from './ObjectURLManager';
 import Thumbnail from './Thumbnail';
@@ -29,7 +29,11 @@ class Album extends ObjectURLManager {
 	};
 
 	render() {
-		const { images, album } = this.props;
+		const { loading, images, album } = this.props;
+
+		if (loading) {
+			return <h1>{'Loading...'}</h1>;
+		}
 
 		let thumbnails = images.map((image, index) => {
 			let url = image.thumbnail
@@ -50,7 +54,7 @@ class Album extends ObjectURLManager {
 
 		return (
 			<div>
-				<Link to={'/'}>
+				<Link href={'/'}>
 					<FontAwesome name={'arrow-left'} />
 				</Link>
 				<Dropzone
@@ -80,11 +84,17 @@ class Album extends ObjectURLManager {
 }
 
 function select(state, navProps) {
-	let album = state.albumsById[navProps.params.albumId];
+	const album = state.albumsById[navProps.matches.albumId];
+	const loading = album === undefined;
 
 	return {
-		album: album,
-		images: album.images.map(imageId => state.imagesById[imageId])
+		loading,
+		album,
+		images: (
+			loading
+			? []
+			: album.images.map(imageId => state.imagesById[imageId])
+		),
 	};
 }
 

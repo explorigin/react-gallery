@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { replace } from 'react-router-redux';
+import { route } from 'preact-router';
 
 import { addAlbum } from '../actions';
 
@@ -14,15 +14,15 @@ class NewAlbumDialog extends Component {
 		let action = addAlbum(this.refs.albumName.value, null);
 		dispatch(action);
 		this.refs.albumName.value = '';
-		dispatch(replace(`/album/${action.payload.id}`));
+		route(`/album/${action.payload.id}`, true);
 	};
 
 	render() {
 		return (
 			<form onSubmit={this.onSubmit}>
-				<h1>{"Hi...I'm a new Album"}</h1>
+				<h1>{'Hi...I\'m a new Album'}</h1>
 				<input type="text" ref="albumName" autoFocus />
-				<button type="submit">{"Add"}</button>
+				<button type="submit">{'Add'}</button>
 			</form>
 		);
 	}

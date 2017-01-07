@@ -1,11 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router';
-// import { createHistory } from 'history';
-import createHistory from 'history/lib/createHashHistory';
+import { Router, Route } from 'preact-router';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import { persistentStore } from 'persistent-redux';
@@ -27,32 +24,24 @@ const rootElement = document.getElementById('app');
 const db = new PouchDB('gallery');
 rootElement.className = styles.main;
 
-const options = {
+persistentStore({
 	adapter: new PouchDBAdapter(db, { blobSupport: true }),
-	actionFilter: ((action) => action.type.indexOf('@@router') !== 0),
-};
-
-const rMiddleware = routerMiddleware(browserHistory);
-
-persistentStore(options).then((persistentMiddleware) => {
+}).then((persistentMiddleware) => {
 	const createStoreWithMiddleware = compose(
 		applyMiddleware(
 			createLogger(),
 			thunk,
-			rMiddleware,
 		),
 		persistentMiddleware
 	)(createStore);
 
 	const store = createStoreWithMiddleware(RootReducer);
-	const history = syncHistoryWithStore(browserHistory, store);
 
 	render((
 		<Provider store={store}>
-			<Router history={history}>
-				<Route path="/" component={AlbumSelector}>
-					<Route path="/album/new" component={NewAlbumDialog} />
-				</Route>
+			<Router>
+				<Route path="/" component={AlbumSelector} />
+				<Route path="/album/new" component={NewAlbumDialog} />
 				<Route path="/album/:albumId" component={Album}/>
 				<Route path="/album/:albumId/:imageIndex" component={ImageView}/>
 				<Route path="*" component={NotFound} />

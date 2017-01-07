@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { push, replace } from 'react-router-redux';
-import { Link } from 'react-router';
+import { Link, route } from 'preact-router';
 
 import FontAwesome from 'react-fontawesome';
 
@@ -20,22 +19,22 @@ class ImageView extends ObjectURLManager {
 	};
 
 	nextImage = () => {
-		let { dispatch, album, imageIndex } = this.props;
+		let { album, imageIndex } = this.props;
 		if (!this.isLastImage()) {
-			dispatch(push(`/album/${album.id}/${imageIndex+1}`));
+			route(`/album/${album.id}/${imageIndex+1}`);
 		}
 	};
 
 	prevImage = () => {
-		let { dispatch, album, imageIndex } = this.props;
+		let { album, imageIndex } = this.props;
 		if (!this.isFirstImage()) {
-			dispatch(push(`/album/${album.id}/${imageIndex-1}`));
+			route(`/album/${album.id}/${imageIndex-1}`);
 		}
 	};
 
 	removeImage = () => {
 		let { dispatch, album, image } = this.props;
-		dispatch(replace(`/album/${album.id}`));
+		route(`/album/${album.id}`, true);
 		dispatch(removeImage(image.id, album.id));
 	};
 
@@ -45,7 +44,7 @@ class ImageView extends ObjectURLManager {
 
 		return (
 			<div>
-				<Link to={`/album/${album.id}`}>
+				<Link href={`/album/${album.id}`}>
 					<FontAwesome name={'arrow-left'} />
 				</Link>
 				<figure>
@@ -63,7 +62,7 @@ class ImageView extends ObjectURLManager {
 }
 
 function select(state, navProps) {
-	let { albumId, imageIndex } = navProps.params,
+	let { albumId, imageIndex } = navProps.matches,
 		album = state.albumsById[albumId];
 
 	return {
