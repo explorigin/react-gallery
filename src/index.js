@@ -16,7 +16,7 @@ import RootReducer from './reducers/Root';
 import NotFound from './components/NotFound';
 import AlbumSelector from './components/AlbumSelector';
 import Album from './components/Album';
-import ImageView from './components/ImageView';
+import ImageViewerView from './components/ImageViewerView';
 import NewAlbumDialog from './components/NewAlbumDialog';
 
 import styles from './styles/App.css';
@@ -45,7 +45,7 @@ persistentStore({
 				<AlbumSelector path="/" />
 				<NewAlbumDialog path="/album/new" />
 				<Album path="/album/:albumId" />
-				<ImageView path="/album/:albumId/:imageIndex" />
+				<ImageViewerView path="/album/:albumId/:imageIndex" />
 				<NotFound default />
 			</Router>
 		</Provider>
