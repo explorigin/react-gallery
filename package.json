@@ -27,7 +27,7 @@
     "eslint-loader": "1.6.1",
     "eslint-plugin-react": "6.8.0",
     "extract-text-webpack-plugin": "1.0.1",
-    "history": "4.5.0",
+    "history": "4.5.1",
     "linear-partitioning": "0.3.1",
     "persistent-redux": "1.0.2",
     "pouchdb": "6.1.1",
